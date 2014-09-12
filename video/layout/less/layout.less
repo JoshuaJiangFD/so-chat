@@ -1,0 +1,63 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: 'Avenir';
+    line-height: 1.5;
+}
+*{
+    box-sizing: border-box;
+}
+
+@avatarW: 60px;
+
+#msg-list{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    .msg-item{
+        margin-bottom: 1.5em;
+        .avatar{
+            float: left;
+            width: @avatarW;
+            height: @avatarW;
+            margin-right: 0.75em;
+        }
+        .msg-content{
+            overflow: hidden;
+            min-height: 60px;
+        }
+        .msg-user-name{
+            margin-right: 0.5em;
+            color: lighten(#3b5998, 10%);
+            font-weight: bold;
+
+            &:after{
+                content: ':';
+            }
+        }
+        .msg-text{
+            
+        }
+    }
+}
+
+@pLR: 30px;
+.wrapper{
+    width: 2*@pLR + @avatarW*8;
+    height: 400px;
+    padding: @pLR 0 0 @pLR;
+    overflow: auto;
+    background-color: #000;
+
+    .fb-header{
+
+    }
+    #list-ctn{
+        width: @avatarW*8;
+        padding: 0 @avatarW;
+        background-color: #fff;
+    }
+}
+

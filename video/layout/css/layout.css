@@ -1,0 +1,49 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: 'Avenir';
+  line-height: 1.5;
+}
+* {
+  box-sizing: border-box;
+}
+#msg-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#msg-list .msg-item {
+  margin-bottom: 1.5em;
+}
+#msg-list .msg-item .avatar {
+  float: left;
+  width: 60px;
+  height: 60px;
+  margin-right: 0.75em;
+}
+#msg-list .msg-item .msg-content {
+  overflow: hidden;
+  min-height: 60px;
+}
+#msg-list .msg-item .msg-user-name {
+  margin-right: 0.5em;
+  color: #4c70ba;
+  font-weight: bold;
+}
+#msg-list .msg-item .msg-user-name:after {
+  content: ':';
+}
+.wrapper {
+  width: 540px;
+  height: 400px;
+  padding: 30px 0 0 30px;
+  overflow: auto;
+  background-color: #000;
+}
+.wrapper #list-ctn {
+  width: 480px;
+  padding: 0 60px;
+  background-color: #fff;
+}

@@ -1,0 +1,49 @@
+{
+  "name": "kfc",
+  "version": "0.0.0",
+  "description": "embedable chat room with nodejs and react-flux",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest",
+    "start": "gulp wd",
+    "build": "gulp"
+  },
+  "keywords": [
+    "chat-room",
+    "react",
+    "flux",
+    "nodejs",
+    "embedable"
+  ],
+  "author": "teamrun",
+  "license": "mit",
+  "dependencies": {
+    "browser-sync": "^1.3.6",
+    "browserify": "^5.11.0",
+    "envify": "^3.0.0",
+    "gulp": "^3.8.7",
+    "gulp-browserify": "^0.5.0",
+    "gulp-cond": "0.0.2",
+    "gulp-jade": "^0.7.0",
+    "gulp-livereload": "^2.1.1",
+    "gulp-plumber": "^0.6.5",
+    "gulp-rename": "^1.2.0",
+    "gulp-uglify": "^1.0.1",
+    "gulp-util": "^3.0.1",
+    "mongoose": "^3.8.16",
+    "react": "^0.11.1",
+    "reactify": "^0.14.0",
+    "uglify-js": "^2.4.15",
+    "vinyl-source-stream": "^0.1.1",
+    "watchify": "^1.0.2"
+  },
+  "browserify": {
+    "transform": [
+      "reactify",
+      "envify"
+    ]
+  },
+  "devDependencies": {
+    "should": "^4.0.4"
+  }
+}
