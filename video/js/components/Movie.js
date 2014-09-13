@@ -17,13 +17,10 @@ function typeWords(word, dur, offSet, callback){
     var arr = word.split('');
 
     arr.forEach(function(el, i){
-        (function(index){
-            callback( word.substr(0, 1) );
-            setTimeout(function(){
-                callback(word.substr(0, index+1));
-            }, (dur*(index+1)/arr.length) + offSet);
-            
-        })(i);
+        callback( word.substr(0, 1) );
+        setTimeout(function(){
+            callback(word.substr(0, i+1));
+        }, (dur*(i+1)/arr.length) + offSet);
     });
 }
 
