@@ -3,17 +3,24 @@
  */ 
 
  function buildMsgItem(msg){
-            // <img src={msg.avatar} className="avatar" />
-                // <span className="msg-user-name">{msg.alias}</span>
     return (
         <li className="msg-item">
-            <img src={'./img/avatar/'+msg.user+'.png'} className="avatar" />
+            <img src={msg.avatar} className="avatar" />
             <div className="msg-content">
-                <span className="msg-user-name">{msg.user}</span>
+                <span className="msg-user-name">{msg.alias}</span>
                 <span className="msg-text">{msg.word}</span>
             </div>
         </li>
         );
+    // return (
+    //     <li className="msg-item">
+    //         <img src={'./img/avatar/'+msg.user+'.png'} className="avatar" />
+    //         <div className="msg-content">
+    //             <span className="msg-user-name">{msg.user}</span>
+    //             <span className="msg-text">{msg.word}</span>
+    //         </div>
+    //     </li>
+    //     );
  }
 
 

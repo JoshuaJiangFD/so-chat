@@ -36,14 +36,82 @@ body {
   content: ':';
 }
 .wrapper {
-  width: 540px;
-  height: 400px;
-  padding: 30px 0 0 30px;
-  overflow: auto;
+  padding: 50px 20px;
+  overflow: hidden;
   background-color: #000;
 }
-.wrapper #list-ctn {
+.wrapper #msg-module {
   width: 480px;
+  height: 300px;
   padding: 0 60px;
-  background-color: #fff;
+  background-color: #EEE8F1;
+  overflow: hidden;
+}
+.wrapper .msg-header .status-header {
+  padding: 0.5em 0 0 0;
+  margin-right: -60px;
+  border-bottom: 1px solid #ccc;
+}
+.wrapper .msg-header .status-header:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.wrapper .msg-header .status-title {
+  float: left;
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.25em;
+  color: #333;
+  text-decoration: none;
+}
+.wrapper .msg-header .status-title .icon {
+  position: relative;
+  top: 2px;
+  margin-right: 0.25em;
+}
+.wrapper .msg-header .add-update {
+  float: right;
+  margin-right: -0.5em;
+}
+.simulate-video {
+  width: 800px;
+  margin: 60px auto 0 auto;
+}
+.simulate-video .wrapper,
+.simulate-video audio {
+  display: block;
+  width: 520px;
+  margin: 0 auto;
+  background: #000;
+}
+.middle-dot {
+  position: relative;
+  top: -0.3em;
+  margin: 0 0.5em;
+}
+.link-group {
+  color: #38599c;
+}
+.fb-link {
+  color: #38599c;
+  text-decoration: none;
+}
+.icon {
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+  background-image: url('../../img/icons.png');
+  cursor: pointer;
+}
+.icon.icon-people {
+  background-position: 0 -171px;
+}
+.btn {
+  display: inline-block;
+  line-height: 1.5;
+  padding: 0 5px;
+  border: 1px solid #ccc;
+  background-color: #DDDBDD;
+  cursor: pointer;
 }

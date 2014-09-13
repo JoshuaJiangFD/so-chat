@@ -14,13 +14,27 @@ function getAllData(){
     };
 };
 
+var scollEle = null, lastScrollHeight = 0;
+function checkAndScroll(){
+    var newH = scollEle.scrollHeight;
+    if( newH > lastScrollHeight ){
+        scollEle.scrollTop = newH;
+        lastScrollHeight = newH;
+    }
+}
 
 var ChatList = React.createClass({
     getInitialState: function(){
         return getAllData();
     },
     componentDidMount: function() {
+        scollEle = $(this.props.scrollEle).get(0);
+        checkAndScroll();
+        // lastScrollHeight = scollEle.scrollHeight;
         ChatStore.addChangeListener( this._onChange );
+    },
+    componentDidUpdate: function(){
+        checkAndScroll();
     },
     componentWillMount: function() {
         ChatStore.removeChangeListener( this._onChange );

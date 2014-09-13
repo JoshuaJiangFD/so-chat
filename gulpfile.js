@@ -12,7 +12,10 @@ var browserify = require('browserify');
 var gbro = require('gulp-browserify');
 var reactify = require('reactify');
 var envify = require('envify');
+
+
 var rename = require('gulp-rename');
+var less = require('gulp-less');
 
 function errHandler(err){
     gutil.beep();
@@ -111,6 +114,11 @@ gulp.task('jade', function(){
         .pipe(jade())
         .pipe(gulp.dest('video'));
 });
+gulp.task('less', function(){
+    return gulp.src('./video/layout/less/**/*.less')
+        .pipe(less({comments: 'dumpLineNumbers'}))
+        .pipe(gulp.dest('./video/layout/css'));
+})
 gulp.task('video-bundle', function(){
     return gulp.src('./video/js/app.js')
         .pipe(plumber({errorHandler: errHandler}))
@@ -125,7 +133,8 @@ gulp.task('video-bundle', function(){
 gulp.task('w-jade', function(){
     gulp.watch('video/jade/**/*.jade', ['jade']);
     gulp.watch(['./video/js/**/*.js', '!./video/js/bundle.js'], ['video-bundle']);
+    gulp.watch(['./video/layout/less/**/*.less'], ['less']);
 })
 
 
-gulp.task('video', ['jade', 'video-bundle', 'w-jade']);
+gulp.task('video', ['jade', 'less', 'video-bundle', 'w-jade']);

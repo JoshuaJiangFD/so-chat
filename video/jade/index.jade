@@ -7,8 +7,22 @@ html
         script(src="../lib/vendor/jquery-1.8.3.js")
         link(rel="stylesheet", href="./layout/css/layout.css")
     body
-        div.wrapper
-            div.fb-header
-            div#list-ctn
+        div.simulate-video
+            div.wrapper
+                div#msg-module
+                    div.msg-header
+                        div.status-header
+                            a.status-title(href="#")
+                                .icon.icon-people
+                                span Status Update
+                            .btn.add-update + Update
+                        .link-group
+                            a.fb-link(href="#") Comment
+                            span.middle-dot .
+                            a.fb-link(href="#") Like
+
+                    div.list-ctn
+
+            audio(controls, src="media/Social Network - In Theaters.aac")
 
         script(src="./js/bundle.js")

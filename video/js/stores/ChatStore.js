@@ -15,7 +15,7 @@ var userData = require('../data/userData.js');
 
 var _data = {};
 
-_data = dialogData;
+// _data = dialogData;
 
 function getAll(){
     var arr = [];
