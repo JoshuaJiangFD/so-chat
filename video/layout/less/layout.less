@@ -9,6 +9,12 @@ html, body{
     box-sizing: border-box;
 }
 
+.tst(@v: all 300ms ease){
+    -webkit-transition: @v;
+    -moz-transition: @v;
+    -ms-transition: @v;
+    --transition: @v;
+}
 @avatarW: 60px;
 
 
@@ -51,19 +57,25 @@ html, body{
 @pLR: 20px;
 @pTB: 50px;
 .wrapper{
-    
+    position: relative;
     padding: @pTB @pLR;
-    
     overflow: hidden;
     background-color: #000;
-    
+
+    @dur: 1200ms;
     #msg-module{
         width: @avatarW*8;
         height: 300px;
         padding: 0 @avatarW;
-        background-color: #EEE8F1;
-
+        background-color: #DCDBE1;
         overflow: hidden;
+
+        .tst(opacity @dur ease, bottom 0ms ease @dur;);
+        opacity: 1;
+
+        &.hidden{
+            opacity: 0;
+        }
     }
     .msg-header{
         .status-header{
@@ -80,7 +92,7 @@ html, body{
         .status-title{
             float: left;
             margin: 0;
-            font-weight: bold;
+            // font-weight: bold;
             font-size: 1.25em;
             color: #333;
             text-decoration: none;
@@ -98,6 +110,30 @@ html, body{
             margin-right: -0.5em;
         }
     }
+
+    .movie-title{
+        margin: 150px auto 0 auto;
+        line-height: 50px;
+        width: 255px;
+        // font-family: 'Heiti SC Medium';
+        font-weight: bold;
+        text-align: center;
+        // padding: 0 1.5em;
+        // background-color: #395175;
+        color: #fff;
+        background-image: linear-gradient(to right, #395175, lighten(#52688A, 10%), #395175);
+        opacity: 0.9;
+
+        .tst(all 50ms ease);
+        opacity: 1;
+        // -webkit-transform: scale(1);
+        // transform: scale(1);
+
+        &.hidden{
+            opacity: 0;
+            // transform: scale(0.95);
+        }
+    }
 }
 
 
@@ -111,9 +147,29 @@ html, body{
         width: 2*@pLR + @avatarW*8;
         margin: 0 auto;
         background: #000;
+        // chrome下audio控制条的高度
+        margin-top: -30px;
     }
 }
 
+
+.mask{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: #000;
+    
+    .tst(opacity 200ms ease, bottom 0ms ease 200ms;);
+    bottom: 0;
+    opacity: 1;
+
+    &.hidden{
+        bottom: 100%;
+        opacity: 0;
+    }
+}
 .middle-dot{
     position: relative;
     top: -0.3em;

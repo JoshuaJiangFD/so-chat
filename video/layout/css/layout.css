@@ -36,6 +36,7 @@ body {
   content: ':';
 }
 .wrapper {
+  position: relative;
   padding: 50px 20px;
   overflow: hidden;
   background-color: #000;
@@ -44,8 +45,16 @@ body {
   width: 480px;
   height: 300px;
   padding: 0 60px;
-  background-color: #EEE8F1;
+  background-color: #DCDBE1;
   overflow: hidden;
+  -webkit-transition: opacity 1200ms ease, bottom 0ms ease 1200ms;
+  -moz-transition: opacity 1200ms ease, bottom 0ms ease 1200ms;
+  -ms-transition: opacity 1200ms ease, bottom 0ms ease 1200ms;
+  --transition: opacity 1200ms ease, bottom 0ms ease 1200ms;
+  opacity: 1;
+}
+.wrapper #msg-module.hidden {
+  opacity: 0;
 }
 .wrapper .msg-header .status-header {
   padding: 0.5em 0 0 0;
@@ -60,7 +69,6 @@ body {
 .wrapper .msg-header .status-title {
   float: left;
   margin: 0;
-  font-weight: bold;
   font-size: 1.25em;
   color: #333;
   text-decoration: none;
@@ -74,6 +82,24 @@ body {
   float: right;
   margin-right: -0.5em;
 }
+.wrapper .movie-title {
+  margin: 150px auto 0 auto;
+  line-height: 50px;
+  width: 255px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  background-image: linear-gradient(to right, #395175, #6981a6, #395175);
+  opacity: 0.9;
+  -webkit-transition: all 50ms ease;
+  -moz-transition: all 50ms ease;
+  -ms-transition: all 50ms ease;
+  --transition: all 50ms ease;
+  opacity: 1;
+}
+.wrapper .movie-title.hidden {
+  opacity: 0;
+}
 .simulate-video {
   width: 800px;
   margin: 60px auto 0 auto;
@@ -84,6 +110,25 @@ body {
   width: 520px;
   margin: 0 auto;
   background: #000;
+  margin-top: -30px;
+}
+.mask {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: #000;
+  -webkit-transition: opacity 200ms ease, bottom 0ms ease 200ms;
+  -moz-transition: opacity 200ms ease, bottom 0ms ease 200ms;
+  -ms-transition: opacity 200ms ease, bottom 0ms ease 200ms;
+  --transition: opacity 200ms ease, bottom 0ms ease 200ms;
+  bottom: 0;
+  opacity: 1;
+}
+.mask.hidden {
+  bottom: 100%;
+  opacity: 0;
 }
 .middle-dot {
   position: relative;
