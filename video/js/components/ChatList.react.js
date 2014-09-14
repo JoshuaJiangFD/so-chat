@@ -15,22 +15,35 @@ function getAllData(){
 };
 
 var scollEle = null, lastScrollHeight = 0;
+var scrollCtn = null, ctnHeight = 0;
 function checkAndScroll(){
-    var newH = scollEle.scrollHeight;
+    var newH = scrollCtn.scrollHeight;
     if( newH > lastScrollHeight ){
-        scollEle.scrollTop = newH;
+        scollEle.css({
+            '-webkit-transform': 'translateY(-'+ (newH - ctnHeight)+'px)',
+            '-moz-transform': 'translateY(-'+ (newH - ctnHeight)+'px)',
+            'transform': 'translateY(-'+ (newH - ctnHeight)+'px)'
+        });
+        console.log( newH - ctnHeight );
         lastScrollHeight = newH;
     }
 }
+
+
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 var ChatList = React.createClass({
     getInitialState: function(){
         return getAllData();
     },
     componentDidMount: function() {
-        scollEle = $(this.props.scrollEle).get(0);
+        // 初始化消息滚动
+        scollEle = $(this.props.scrollEle);
+        scrollCtn = $(this.props.scrollCtn).get(0);
+        ctnHeight = $(scrollCtn).height();
         checkAndScroll();
-        // lastScrollHeight = scollEle.scrollHeight;
+        
+        // 添加change监听
         ChatStore.addChangeListener( this._onChange );
     },
     componentDidUpdate: function(){
@@ -44,7 +57,13 @@ var ChatList = React.createClass({
             return <ChatWord item={item} key={i} />;
         });
 
-        return <ul id="msg-list">{nodes}</ul>;
+        return (
+            <ul id="msg-list">
+                <ReactCSSTransitionGroup transitionName="msg-item">
+                    {nodes}
+                </ReactCSSTransitionGroup>
+            </ul>
+        );
     },
     _onChange: function(){
         this.setState( getAllData() )

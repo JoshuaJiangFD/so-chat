@@ -26,6 +26,24 @@ html, body{
 
     .msg-item{
         margin-bottom: 1.5em;
+
+        &.msg-item-enter{
+            opacity: 0.2;
+            .tst(opacity 200ms ease;);
+
+            &.msg-item-enter-active{
+                opacity: 1;
+            }
+        }
+        &.msg-item-leave{
+            opacity: 1;
+            .tst(opacity 200ms ease;);
+
+            &.msg-item-enter-active{
+                opacity: 0;
+            }
+        }
+
         .avatar{
             float: left;
             width: @avatarW;

@@ -17,6 +17,26 @@ body {
 #msg-list .msg-item {
   margin-bottom: 1.5em;
 }
+#msg-list .msg-item.msg-item-enter {
+  opacity: 0.2;
+  -webkit-transition: opacity 200ms ease;
+  -moz-transition: opacity 200ms ease;
+  -ms-transition: opacity 200ms ease;
+  --transition: opacity 200ms ease;
+}
+#msg-list .msg-item.msg-item-enter.msg-item-enter-active {
+  opacity: 1;
+}
+#msg-list .msg-item.msg-item-leave {
+  opacity: 1;
+  -webkit-transition: opacity 200ms ease;
+  -moz-transition: opacity 200ms ease;
+  -ms-transition: opacity 200ms ease;
+  --transition: opacity 200ms ease;
+}
+#msg-list .msg-item.msg-item-leave.msg-item-enter-active {
+  opacity: 0;
+}
 #msg-list .msg-item .avatar {
   float: left;
   width: 60px;

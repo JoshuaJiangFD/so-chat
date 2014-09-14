@@ -10,22 +10,25 @@ html
         div.simulate-video
             div.wrapper
                 div#msg-module.hidden
-                    div.msg-header
-                        div.status-header
-                            a.status-title(href="#")
-                                .icon.icon-people
-                                span Status Update
-                            .btn.add-update + Update
-                        .link-group
-                            a.fb-link(href="#") Comment
-                            span.middle-dot .
-                            a.fb-link(href="#") Like
+                    //- add a wrapper for scroll
+                    //- like iscroll
+                    div.scroll-wrapper
+                        div.msg-header
+                            div.status-header
+                                a.status-title(href="#")
+                                    .icon.icon-people
+                                    span Status Update
+                                .btn.add-update + Update
+                            .link-group
+                                a.fb-link(href="#") Comment
+                                span.middle-dot .
+                                a.fb-link(href="#") Like
 
-                    div.list-ctn
+                        div.list-ctn
 
                 div.mask.curtain.hidden
                     h2.movie-title.hidden the social network
 
-            audio(controls, src="media/Social Network - In Theaters.aac")
+            audio(controls, volume="0.5" src="media/Social Network - In Theaters.aac")
 
         script(src="./js/bundle.js")
