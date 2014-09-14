@@ -24,7 +24,7 @@ function checkAndScroll(){
             '-moz-transform': 'translateY(-'+ (newH - ctnHeight)+'px)',
             'transform': 'translateY(-'+ (newH - ctnHeight)+'px)'
         });
-        console.log( newH - ctnHeight );
+        // console.log( newH - ctnHeight );
         lastScrollHeight = newH;
     }
 }
