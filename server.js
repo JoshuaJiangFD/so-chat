@@ -8,7 +8,7 @@ var nodeJSX = require('node-jsx').install();
 var react = require('react');
 
 // 我的模块
-var reactApp = require('./lib/components/TmplApp.react.js');
+var reactApp = require('./lib/components/ChatApp.react.js');
 // var reactApp = require('./lib/app');
 // var jsxRequire = require('./backend/util/jsxRequire');
 
