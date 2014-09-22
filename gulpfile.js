@@ -49,20 +49,25 @@ gulp.task('bundle-gulp-browserify', function(){
         .pipe(gulp.dest('./lib'));
 });
 
+gulp.task('less', function(){
+    gulp.src('layout/less/layout.less')
+        .pipe(less({dumpLineNumbers: 'comments'}))
+        .pipe(gulp.dest('layout/css'));
+});
+
 gulp.task('watch', function(){
     // gulp-livereload module updated... 
     liveReload.listen();
 
     var file2w = ['./lib/**/*.js', '!./lib/bundle.js'];
     gulp.watch(file2w, [bundleTask]);
-    // gulp.watch(file2w, function(file){
-    //     console.log(file.path);
-    // });
     
-    var file2r = ['./index.html', './lib/bundle.js'];
+    gulp.watch('layout/less/**/*.less', ['less']);
+    
+    var file2r = ['./index.html', './lib/bundle.js', './layout/**/*.css'];
     gulp.watch(file2r, liveReload.changed);
 });
 
-gulp.task('default', [ bundleTask ]);
+gulp.task('default', [ bundleTask, 'less' ]);
 
-gulp.task('wd', [bundleTask, 'watch']);
+gulp.task('wd', [bundleTask, 'less', 'watch']);
