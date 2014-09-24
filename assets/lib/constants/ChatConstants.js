@@ -1,5 +1,6 @@
 var keyMirror = require('react/lib/keyMirror');
 
 module.exports = keyMirror({
-    XX_CREATE: null
+    MSG_CREATE: null,
+    MSG_RECEIVE: null
 });

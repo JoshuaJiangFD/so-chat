@@ -7,13 +7,19 @@ var Dispatcher = require('./Dispatcher');
 
 var copyProperties = require('react/lib/copyProperties');
 
-var AppDispatcher = copyProperties(new Dispatcher(), {
+var ChatAppDispatcher = copyProperties(new Dispatcher(), {
     handleViewAction: function(action){
         this.dispatch({
             source: 'VIEW_ACTION',
             action: action
         });
+    },
+    handlerServerAction: function(action){
+        this.dispatch({
+            source: 'SERVER_ACTION',
+            action: action
+        });
     }
 });
 
-module.exports = AppDispatcher;
+module.exports = ChatAppDispatcher;

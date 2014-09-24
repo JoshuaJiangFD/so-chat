@@ -38,7 +38,7 @@ if( productTasks.indexOf(taskName) >= 0 ){
 
 
 gulp.task('bundle-gulp-browserify', function(){
-    return gulp.src('./lib/app.js')
+    return gulp.src('./assets/lib/app.js')
         .pipe(plumber({errorHandler: errHandler}))
         .pipe(gbro({
             transform: [reactify, envify],
@@ -46,25 +46,25 @@ gulp.task('bundle-gulp-browserify', function(){
         }))
         .pipe(rename('bundle.js'))
         .pipe( cond(proEnv, uglify()) )
-        .pipe(gulp.dest('./lib'));
+        .pipe(gulp.dest('./assets/lib'));
 });
 
 gulp.task('less', function(){
-    gulp.src('layout/less/layout.less')
+    gulp.src('assets/layout/less/layout.less')
         .pipe(less({dumpLineNumbers: 'comments'}))
-        .pipe(gulp.dest('layout/css'));
+        .pipe(gulp.dest('assets/layout/css'));
 });
 
 gulp.task('watch', function(){
     // gulp-livereload module updated... 
     liveReload.listen();
 
-    var file2w = ['./lib/**/*.js', '!./lib/bundle.js'];
+    var file2w = ['./assets/lib/**/*.js', '!./assets/lib/bundle.js'];
     gulp.watch(file2w, [bundleTask]);
     
-    gulp.watch('layout/less/**/*.less', ['less']);
+    gulp.watch('assets/layout/less/**/*.less', ['less']);
     
-    var file2r = ['./index.html', './lib/bundle.js', './layout/**/*.css'];
+    var file2r = ['./views/**/*.jade', './assets/lib/bundle.js', './assets/layout/**/*.css'];
     gulp.watch(file2r, liveReload.changed);
 });
 

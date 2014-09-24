@@ -10,10 +10,6 @@ var React = require('react');
 console.log('js file change will trigger: bundle by browserify & then trigger live reload');
 // console.log('webpack bundle speed... ');
 
-var TimeCounter = require('./components/TmplApp.react.js');
-
-// React.renderComponent(<TimeCounter/>, document.getElementById('ctn'));
-
 var ChatApp = require('./components/ChatApp.react.js');
 
 React.renderComponent(<ChatApp />, document.querySelector('#chat-ctn'));

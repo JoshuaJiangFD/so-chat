@@ -2,6 +2,12 @@
  * @jsx React.DOM
  */
 
+/*
+ * 可以调节区块尺寸的容器
+ * 
+ * 
+ */
+
 var React = require('react');
 
 // resize 拖拽元素的宽度/高度
