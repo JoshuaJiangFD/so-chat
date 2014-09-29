@@ -1,0 +1,26 @@
+//- #login-module.full-module.active
+#login-module.full-module
+    .module-mask
+    .module-content
+        .avatar-ctn
+            img.avatar(src="/img/avatar/default.jpg")
+        .form#login-form
+            input#alias-input(type="text", placeholder="alias, more than 2 chars")
+            a#login-btn.btn.btn-primary.btn-block.disabled(href="#") Login
+
+script.
+    var input = $('#alias-input');
+    var btn = $('#login-btn');
+    input.on('keyup', function(e){
+        var val = input.val().trim();
+        if(val.length > 2){
+            btn.removeClass('disabled');
+        }
+        else{
+            btn.addClass('disabled');
+        }
+
+        if(e.keyCode === 13 && !btn.hasClass('disabled') ){
+            //- go login
+        }
+    });

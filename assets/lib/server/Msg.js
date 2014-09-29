@@ -3,7 +3,7 @@ var ChatDispatcher = require('../dispatcher/ChatDispatcher');
 var ChatConstants = require('../constants/ChatConstants');
 
 var UserStore = require('../stores/UserStore');
-var MsgAction = require('../actions/MsgAction');
+var AppAction = require('../actions/AppAction');
 
 var _socket = null;
 
@@ -20,7 +20,7 @@ function sendMsgToServer(text, msgId){
 
 function bind(){
     _socket.on('msg-others', function(msg){
-        MsgAction.receive(msg);
+        AppAction.receiveMsg(msg);
     });
 }
 

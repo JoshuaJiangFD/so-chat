@@ -96,7 +96,9 @@ var Resizeable = React.createClass({
         hor: null
     },
     getCtnStyle: function(){
-        var resizeEl = document.querySelector('#' + this.props.id);
+        // this.getDOMNode() to get the returned ele
+
+        var resizeEl = this.getDOMNode();
         this.ctnStyle.x = resizeEl.offsetLeft;
         this.ctnStyle.y = resizeEl.offsetTop;
         var cstyle = window.getComputedStyle(resizeEl);

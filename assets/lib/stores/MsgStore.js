@@ -5,22 +5,20 @@ var ChatDispatcher = require('../dispatcher/ChatDispatcher');
 var ChatConstants = require('../constants/ChatConstants');
 
 var UserStore = require('./UserStore');
+var ThreadStore = require('./ThreadStore');
 
 var CHANGE_EVENT = 'change';
 
 
-var MsgData = {
-    0: {
-        text: 'I\'m here~',
-        user: UserStore.getById('me')
-    },
-    1: {
-        text: '"Instagram-team是如何工作的" by Pete Hunt. pete总结"作为一个小团队"他们是如何构建大型web app的, 不止于react. 继续践行component可复用的开发模式. @小芋头君 @岱云欢 .@飞天小黑神猪 看看, 又引入了新的separate of concern工具... @Doraemon718 嗯 深度~',
-        user: UserStore.getById('me')
-    }
-};
+var MsgData = {};
 
 var _dataHandler = {
+    init: function(msgs){
+        msgs.forEach(function(m){
+            MsgData[m.id] = m;
+            MsgData[m.id].user = UserStore.getById( MsgData[m.id].user );
+        });
+    },
     // 当前用户创建新msg只需要传递内容
     create: function(text, msgId){
         var now = Date.now();
@@ -40,6 +38,15 @@ var _dataHandler = {
 var MsgStore = merge(EventEmitter.prototype, {
     getAll: function(){
         return MsgData;
+    },
+    getByThreadId: function(threadId){
+        var msgs = {};
+        for(var m in MsgData){
+            if(MsgData[m].thread === threadId){
+               msgs[m] = MsgData[m];
+            }
+        }
+        return msgs;
     },
     emitChange: function(){
         this.emit(CHANGE_EVENT);
@@ -63,21 +70,26 @@ ChatDispatcher.register(function(payload){
     var text;
 
     switch(action.actionType){
+        case ChatConstants.APP_INIT:
+            ChatDispatcher.waitFor([ThreadStore.dispatchToken]);
+            _dataHandler.init(action.msgs);
+            MsgStore.emitChange();
+            break;
         case ChatConstants.MSG_CREATE:
             text = action.text.trim();
             if( text !== '' ){
                 _dataHandler.create(text, action.msgId);
+                MsgStore.emitChange();
             }
             break;
         case ChatConstants.MSG_RECEIVE:
             _dataHandler.receive( action.msgObj );
+            MsgStore.emitChange();
             break;
         default:
-            console.log('no store handler registed on this action: ', action.actionType)
+            // console.log('no store handler registed on this action: ', action.actionType)
             break;
     }
-
-    MsgStore.emitChange();
     return true;
 });
 

@@ -10,14 +10,28 @@
  */
 var React = require('react');
 
-var UserStore = require('../stores/UserStore.js');
-var MsgStore = require('../stores/MsgStore.js');
+var UserStore = require('../stores/UserStore');
+var MsgStore = require('../stores/MsgStore');
+var ThreadStore = require('../stores/ThreadStore');
+
+
+// 临时存储的thread, 这个优化有没有必要呢... 
+var oldCurThread = null;
 
 function getAllMsg(){
+    var newCurThreadId = ThreadStore.getCurThread();
+    // if( newCurThreadId != oldCurThread ){
+    //     oldCurThread = newCurThreadId;
+    // }
+    // else{
+    //     return false;
+    // }
     return {
-        msgData: MsgStore.getAll() 
+        msgData: MsgStore.getByThreadId( newCurThreadId )
     };
 };
+
+
 
 var MsgList = React.createClass({
     getInitialState: function() {
@@ -25,9 +39,11 @@ var MsgList = React.createClass({
     },
     componentDidMount: function() {
         MsgStore.addChangeListener( this.updateAllMsg );
+        ThreadStore.addChangeListener( this.updateAllMsg );
     },
     componentWillUnmount: function() {
         MsgStore.removeChangeListener( this.updateAllMsg );
+        ThreadStore.removeChangeListener( this.updateAllMsg );
     },
     render: function() {
         var msgItems = [];

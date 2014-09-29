@@ -14,14 +14,19 @@
 var React = require('react');
 var uuid = require('node-uuid');
 
-var MsgAction = require('../actions/MsgAction');
+var AppAction = require('../actions/AppAction');
 
 var Resizeable = require('./Resizeable.react');
 var ThreadList = require('./ThreadList.react');
 var Dialog = require('./MsgList.react');
 var Compose = require('./Compose.react');
 
-var socketMsg = require('../socket/Msg'); 
+var socketMsg = require('../server/Msg');
+var AppServer = require('../server/appInit');
+
+AppServer.getInitialData(function(){
+    AppServer.init();
+});
 
 
 var ChatApp = React.createClass({
@@ -71,10 +76,8 @@ var ChatApp = React.createClass({
     },
     _sendMsg: function(text){
         var newMsgId = uuid.v4();
-        MsgAction.create(text, newMsgId);
+        AppAction.createMsg(text, newMsgId);
     }
-
-
 });
 
 module.exports = ChatApp;

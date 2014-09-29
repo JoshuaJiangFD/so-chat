@@ -1,4 +1,8 @@
+@import "./mixin.less";
+
 @import "./resizeable.less";
+
+@import "./login.less";
 
 @import "./chat-list.less";
 @import "./chat-app.less";
@@ -9,4 +13,13 @@ body{
     font-family: 'Avenir';
     font-size: 16px;
     line-height: 1.35;
+}
+
+*{
+    box-sizing: border-box;
+
+    &:before,
+    &:after{
+        box-sizing: border-box;
+    }
 }

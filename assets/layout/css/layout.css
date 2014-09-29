@@ -19,15 +19,134 @@
   top: 0;
   bottom: 0;
   cursor: col-resize;
-  left: 100px;
+  left: 150px;
 }
 /* line 23, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/resizeable.less */
 .resizeable .resize-hor {
   height: 2px;
   right: 0;
   cursor: row-resize;
-  left: 102px;
+  left: 152px;
   top: 350px;
+}
+/* line 1, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
+.full-module {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  overflow: hidden;
+  opacity: 0;
+  z-index: -10;
+  -webkit-transition: opacity 300ms ease-in-out, bottom 0ms ease 300ms, z-index 0ms ease 300ms;
+  -moz-transition: opacity 300ms ease-in-out, bottom 0ms ease 300ms, z-index 0ms ease 300ms;
+  transition: opacity 300ms ease-in-out, bottom 0ms ease 300ms, z-index 0ms ease 300ms;
+}
+/* line 14, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
+.full-module.active {
+  bottom: 0;
+  opacity: 1;
+  z-index: 1000;
+  -webkit-transition: opacity 300ms ease-in-out;
+  -moz-transition: opacity 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
+}
+/* line 22, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
+.full-module .module-mask {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+/* line 32, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
+.full-module .module-content {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  width: 350px;
+  margin-left: -175px;
+  height: 450px;
+  background-color: #fff;
+}
+/* line 46, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
+.btn {
+  display: inline-block;
+  line-height: 36.8px;
+  min-width: 80px;
+  border: 1px solid #ccc;
+  text-align: center;
+  text-decoration: none;
+  color: #444;
+  background-color: #fff;
+  cursor: pointer;
+}
+/* line 58, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
+.btn-block {
+  display: block;
+}
+/* line 61, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
+.btn-primary {
+  background-color: #395175;
+  color: #fff;
+  -webkit-transition: background-color 300ms ease;
+  -moz-transition: background-color 300ms ease;
+  transition: background-color 300ms ease;
+}
+/* line 66, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
+.btn-primary.disabled {
+  color: #999;
+  background-color: #c9d4e4;
+  cursor: not-allowed;
+}
+/* line 75, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
+#login-module .module-content {
+  border-radius: 6px;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
+  height: auto;
+  width: 280px;
+  margin-right: -140px;
+}
+/* line 84, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
+#login-module .avatar-ctn {
+  height: 80px;
+  width: 80px;
+  margin: -40px auto 0 auto;
+  border-radius: 40px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+/* line 91, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
+#login-module .avatar-ctn .avatar {
+  margin: 1px;
+  height: 80px;
+  width: 80px;
+  border-radius: 40px;
+}
+/* line 99, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
+#login-module #login-form {
+  padding: 2em;
+}
+/* line 102, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
+#login-module #login-form #alias-input,
+#login-module #login-form #login-btn {
+  border-radius: 3px;
+}
+/* line 106, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
+#login-module #login-form #alias-input {
+  display: block;
+  font-size: 16px;
+  height: 2.3em;
+  width: 100%;
+  padding-left: 0.5em;
+  margin-bottom: 1.5em;
+  border: 1px solid #ccc;
+  outline: none;
+}
+/* line 117, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
+#login-module #login-form #login-btn {
+  font-size: 20px;
 }
 /* line 10, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/chat-list.less */
 * {
@@ -41,12 +160,12 @@
 /* line 16, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/chat-list.less */
 html,
 body {
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'Avenir', 'monaco', 'Helvetica Neue', 'Microsoft Yahei';
 }
 /* line 20, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/chat-list.less */
 #dialog-list {
-  width: 500px;
+  width: 450px;
   padding: 2em 1em;
   list-style: none;
   overflow: hidden;
@@ -206,10 +325,34 @@ body {
 .thread-list {
   float: left;
   height: 100%;
-  width: 100px;
+  width: 150px;
   margin: 0;
-  padding: 0;
+  padding: 1em 0 0 0;
+  list-style: none;
   background-color: #f0f0f0;
+}
+/* line 19, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/chat-app.less */
+.thread-list .thread-item {
+  padding: 0.375em 0 0.25em 0.75em;
+  line-height: 1.5;
+  color: #666;
+  cursor: pointer;
+  font-size: 14px;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-transition: all 100ms ease-in;
+  -moz-transition: all 100ms ease-in;
+  transition: all 100ms ease-in;
+}
+/* line 28, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/chat-app.less */
+.thread-list .thread-item:hover {
+  background-color: rgba(57, 81, 117, 0.25);
+}
+/* line 32, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/chat-app.less */
+.thread-list .thread-item.active {
+  background-color: #425E88;
+  color: #fff;
 }
 /* line 1, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/msg-list.less */
 .msg-list {
@@ -224,38 +367,38 @@ body {
 /* line 13, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/msg-list.less */
 .msg-list .msg-item {
   overflow: hidden;
-  min-height: 45px;
+  min-height: 65px;
   margin-bottom: 1em;
 }
-/* line 19, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/msg-list.less */
+/* line 18, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/msg-list.less */
 .msg-list .msg-item .msg-user-avatar {
   float: left;
   margin-right: 8px;
   border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
 }
-/* line 29, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/msg-list.less */
+/* line 28, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/msg-list.less */
 .msg-list .msg-item .msg-user-name {
   margin: 0;
   color: #999;
 }
-/* line 36, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/msg-list.less */
+/* line 35, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/msg-list.less */
 .msg-list .msg-item .msg-text {
   margin-top: 0px;
   margin-bottom: 0;
-  margin-left: 48px;
+  margin-left: 68px;
   color: #444;
 }
-/* line 20, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/chat-app.less */
+/* line 42, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/chat-app.less */
 .compose-ctn {
   margin-left: 100px;
   height: 150px;
   background-color: #e0e0e0;
 }
-/* line 26, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/chat-app.less */
+/* line 48, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/chat-app.less */
 .compose-ctn .compose-input {
   height: 40px;
   width: 300px;
@@ -266,16 +409,25 @@ body {
   border: 2px solid #ccc;
   outline: none;
 }
-/* line 37, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/chat-app.less */
+/* line 59, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/chat-app.less */
 .compose-ctn .compose-input:focus {
   outline: none;
   border: 2px solid #22B2EA;
 }
-/* line 6, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/layout.less */
+/* line 10, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/layout.less */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Avenir';
   font-size: 16px;
   line-height: 1.35;
+}
+/* line 18, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/layout.less */
+* {
+  box-sizing: border-box;
+}
+/* line 21, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/layout.less */
+*:before,
+*:after {
+  box-sizing: border-box;
 }

@@ -51,6 +51,7 @@ gulp.task('bundle-gulp-browserify', function(){
 
 gulp.task('less', function(){
     gulp.src('assets/layout/less/layout.less')
+        .pipe(plumber({errorHandler: errHandler}))
         .pipe(less({dumpLineNumbers: 'comments'}))
         .pipe(gulp.dest('assets/layout/css'));
 });
