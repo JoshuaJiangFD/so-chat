@@ -24,11 +24,16 @@ var AppAction = {
 
 
     // msg
-    createMsg: function(text, msgId){
+    createMsg: function(text, msgId, threadId, userId){
         ChatDispatcher.handleViewAction({
             actionType: ChatlConstants.MSG_CREATE,
-            text: text,
-            msgId: msgId
+            msgObj: {
+                id: msgId,
+                text: text,
+                user: userId,
+                thread: threadId,
+                time: Date.now()
+            }
         })
     },
     receiveMsg: function(msgObj){

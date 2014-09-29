@@ -20,17 +20,12 @@ var _dataHandler = {
         });
     },
     // 当前用户创建新msg只需要传递内容
-    create: function(text, msgId){
-        var now = Date.now();
-        MsgData[msgId] = {
-            id: msgId,
-            time: now,
-            text: text,
-            user: UserStore.getById('me')
-        }
+    create: function(msgObj){
+        MsgData[msgObj.id] = merge({}, msgObj);
+        MsgData[msgObj.id].user = UserStore.getById( msgObj.user );
     },
     receive: function(msgObj){
-        msgObj.user = UserStore.getById(msgObj.userId);
+        msgObj.user = UserStore.getById(msgObj.user);
         MsgData[msgObj.id] = msgObj;
     }
 };
@@ -76,9 +71,9 @@ ChatDispatcher.register(function(payload){
             MsgStore.emitChange();
             break;
         case ChatConstants.MSG_CREATE:
-            text = action.text.trim();
-            if( text !== '' ){
-                _dataHandler.create(text, action.msgId);
+            msgObj = action.msgObj;
+            if( msgObj.text.trim() !== '' ){
+                _dataHandler.create( msgObj );
                 MsgStore.emitChange();
             }
             break;

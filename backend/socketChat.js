@@ -21,7 +21,7 @@ function bind(){
 
 var handler = {
     receiveAndBroadCast: function(socket, msgObj){
-        // log(msgObj);
+        log(msgObj);
         // 时间修正... 有必要吗
         var serverTime = Date.now();
         var timeDis = serverTime - msgObj.time;

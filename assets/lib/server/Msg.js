@@ -8,13 +8,7 @@ var AppAction = require('../actions/AppAction');
 var _socket = null;
 
 
-function sendMsgToServer(text, msgId){
-    var msgObj = {
-        text: text,
-        userId: UserStore.getById('me').id,
-        time: Date.now(),
-        id: msgId
-    };
+function sendMsgToServer(msgObj){
     _socket.emit('msg', msgObj);
 };
 
@@ -31,9 +25,9 @@ ChatDispatcher.register(function(payload){
 
     switch(actionType){
         case ChatConstants.MSG_CREATE:
-            var text = action.text.trim();
-            if(text !== ''){
-                sendMsgToServer(text, action.msgId);
+            var msgObj = action.msgObj;
+            if(msgObj.text.trim() !== ''){
+                sendMsgToServer(msgObj);
             }
             break;
     }
