@@ -11,18 +11,23 @@ var UserData = {
 
 };
 
+var currentUser = '';
+
 // init
-UserData.me = {
-    alias: 'chenllos',
-    id: 'me',
-    avatar: '/img/avatar/chenllos.jpg'
-};
+// UserData.me = {
+//     alias: 'chenllos',
+//     id: 'me',
+//     avatar: '/img/avatar/chenllos.jpg'
+// };
 
 
 function initUserData(serverUsers){
     serverUsers.forEach(function(u){
         UserData[u.id] = u;
     });
+}
+function setCurUser(userId){
+    currentUser = userId;
 }
 
 var UserStore = merge(EventEmitter.prototype, {
@@ -31,6 +36,9 @@ var UserStore = merge(EventEmitter.prototype, {
     },
     getById: function(id){
         return UserData[id];
+    },
+    isCurUser: function(id){
+        return id === currentUser;
     },
     emitChange: function() {
         this.emit(CHANGE_EVENT);
@@ -53,6 +61,12 @@ UserStore.dispatchToken = ChatDispatcher.register(function(payload){
     switch(actionType){
         case ChatConstants.APP_INIT:
             initUserData( action.users );
+            UserStore.emitChange();
+            break;
+        // 用户登录后触发一下数据更新
+        // 按常理应该... 再去fetch数据
+        case ChatConstants.USER_LOGIN:
+            setCurUser(action.userId);
             UserStore.emitChange();
             break;
     };

@@ -38,15 +38,23 @@ if( productTasks.indexOf(taskName) >= 0 ){
 
 
 gulp.task('bundle-gulp-browserify', function(){
-    return gulp.src('./assets/lib/app.js')
+    gulp.src('./assets/lib/app.js')
         .pipe(plumber({errorHandler: errHandler}))
         .pipe(gbro({
             transform: [reactify, envify],
             debug: !proEnv
         }))
         .pipe(rename('bundle.js'))
-        .pipe( cond(proEnv, uglify()) )
         .pipe(gulp.dest('./assets/lib'));
+
+    // gulp.src('./assets/lib/demoModule/login.js')
+    //     .pipe(plumber({errorHandler: errHandler}))
+    //     .pipe(gbro({
+    //         // transform: [reactify, envify],
+    //         debug: !proEnv
+    //     }))
+    //     .pipe(rename('loginModule.js'))
+    //     .pipe(gulp.dest('./assets/lib'));
 });
 
 gulp.task('less', function(){

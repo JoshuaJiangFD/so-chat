@@ -1,3 +1,9 @@
+/* line 13, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/mixin.less */
+.clear-flt:after {
+  content: '';
+  clear: both;
+  display: table;
+}
 /* line 1, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/resizeable.less */
 .resizeable {
   position: relative;
@@ -90,18 +96,19 @@
 /* line 61, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
 .btn-primary {
   background-color: #395175;
+  border: 1px solid #eee;
   color: #fff;
   -webkit-transition: background-color 300ms ease;
   -moz-transition: background-color 300ms ease;
   transition: background-color 300ms ease;
 }
-/* line 66, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
+/* line 67, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
 .btn-primary.disabled {
   color: #999;
   background-color: #c9d4e4;
   cursor: not-allowed;
 }
-/* line 75, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
+/* line 76, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
 #login-module .module-content {
   border-radius: 6px;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
@@ -109,7 +116,7 @@
   width: 280px;
   margin-right: -140px;
 }
-/* line 84, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
+/* line 85, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
 #login-module .avatar-ctn {
   height: 80px;
   width: 80px;
@@ -117,23 +124,23 @@
   border-radius: 40px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
-/* line 91, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
+/* line 92, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
 #login-module .avatar-ctn .avatar {
   margin: 1px;
   height: 80px;
   width: 80px;
   border-radius: 40px;
 }
-/* line 99, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
+/* line 100, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
 #login-module #login-form {
   padding: 2em;
 }
-/* line 102, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
+/* line 103, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
 #login-module #login-form #alias-input,
 #login-module #login-form #login-btn {
   border-radius: 3px;
 }
-/* line 106, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
+/* line 107, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
 #login-module #login-form #alias-input {
   display: block;
   font-size: 16px;
@@ -144,9 +151,10 @@
   border: 1px solid #ccc;
   outline: none;
 }
-/* line 117, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
+/* line 118, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/login.less */
 #login-module #login-form #login-btn {
   font-size: 20px;
+  border-radius: 4px;
 }
 /* line 10, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/chat-list.less */
 * {
@@ -319,7 +327,7 @@ body {
 #chat-window {
   margin: 20px auto 0 auto;
   border-radius: 6px;
-  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.375);
+  box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.5);
 }
 /* line 8, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/chat-app.less */
 .thread-list {
@@ -362,34 +370,59 @@ body {
   margin-left: 100px;
   height: 350px;
   overflow: auto;
-  background-color: #fff;
+  background-color: #E8ECED;
 }
 /* line 13, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/msg-list.less */
 .msg-list .msg-item {
   overflow: hidden;
-  min-height: 65px;
-  margin-bottom: 1em;
+  min-height: 55px;
+  padding: 0.5em 0;
 }
-/* line 18, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/msg-list.less */
+/* line 13, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/mixin.less */
+.msg-list .msg-item:after {
+  content: '';
+  clear: both;
+  display: table;
+}
+/* line 20, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/msg-list.less */
+.msg-list .msg-item.sendbyme .msg-user-avatar,
+.msg-list .msg-item.sendbyme .msg-content-ctn {
+  float: right;
+}
+/* line 24, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/msg-list.less */
+.msg-list .msg-item.sendbyme .msg-content-ctn {
+  margin-right: 8px;
+}
+/* line 29, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/msg-list.less */
 .msg-list .msg-item .msg-user-avatar {
   float: left;
-  margin-right: 8px;
+  width: 50px;
+  height: 50px;
   border: none;
-  width: 60px;
-  height: 60px;
-  border-radius: 30px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  box-shadow: 0 0px 3px rgba(0, 0, 0, 0.5);
 }
-/* line 28, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/msg-list.less */
+/* line 38, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/msg-list.less */
+.msg-list .msg-item .msg-content-ctn {
+  float: left;
+  margin-left: 8px;
+  padding: 4px 8px;
+  background-color: #fff;
+  border-radius: 4px;
+  max-width: 290px;
+  margin-right: 68px;
+  box-shadow: 0 1px 1px 0 #c8c8c8;
+}
+/* line 48, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/msg-list.less */
 .msg-list .msg-item .msg-user-name {
   margin: 0;
-  color: #999;
+  color: #27C198;
+  font-size: 12px;
 }
-/* line 35, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/msg-list.less */
+/* line 57, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/msg-list.less */
 .msg-list .msg-item .msg-text {
-  margin-top: 0px;
+  margin-top: 4px;
   margin-bottom: 0;
-  margin-left: 68px;
   color: #444;
 }
 /* line 42, /Users/chenllos/Documents/dev/ReactFlux/kfc/assets/layout/less/chat-app.less */

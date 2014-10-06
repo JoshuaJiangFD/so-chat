@@ -26,9 +26,9 @@ var Compose = require('./Compose.react');
 var socketMsg = require('../server/Msg');
 var AppServer = require('../server/appInit');
 
-AppServer.getInitialData(function(){
-    AppServer.init();
-});
+// AppServer.getInitialData(function(){
+//     AppServer.init();
+// });
 
 
 var ChatApp = React.createClass({

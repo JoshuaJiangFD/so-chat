@@ -8,3 +8,11 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+.clear-flt{
+    &:after{
+        content: '';
+        clear: both;
+        display: table;
+    }
+}

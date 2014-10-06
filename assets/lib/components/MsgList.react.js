@@ -49,11 +49,18 @@ var MsgList = React.createClass({
         var msgItems = [];
         for(var i in this.state.msgData){
             var msg = this.state.msgData[i];
+            var classNameArr = ['msg-item'];
+            if( UserStore.isCurUser(msg.user.id) ){
+                classNameArr.push('sendbyme');
+            }
+            
             var node = (
-                <li className="msg-item" key={i}>
+                <li className={classNameArr.join(' ')} key={i}>
                     <img className="msg-user-avatar" src={msg.user.avatar} />
-                    <p className="msg-user-name">{msg.user.alias}</p>
-                    <p className="msg-text">{msg.text}</p>
+                    <div className="msg-content-ctn">
+                        <p className="msg-user-name">{msg.user.alias}</p>
+                        <p className="msg-text">{msg.text}</p>
+                    </div>
                 </li>
             );
             msgItems.push( node );

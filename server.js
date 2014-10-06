@@ -3,17 +3,17 @@ var http = require('http');
 
 // 服务器相关
 var express = require('express');
-var app = express();
 var morgan = require('morgan');
-// 程序主题用到的第三方模块
+// 程序主体用到的第三方模块
 var nodeJSX = require('node-jsx').install();
 var react = require('react');
 
 // 我的模块
 var reactApp = require('./assets/lib/components/ChatApp.react.js');
 
-// set配置, 中间件
-var server = require('http').Server(app);
+// server初始化, set配置, 中间件
+var app = express();
+var server = http.Server(app);
 
 app.set('view engine', 'jade');
 
