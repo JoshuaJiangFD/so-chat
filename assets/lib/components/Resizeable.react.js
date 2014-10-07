@@ -74,16 +74,24 @@ var Resizeable = React.createClass({
         // console.log(e.pageX);
         var leftW = e.pageX - this.ctnStyle.x;
         var rightW = this.ctnStyle.width - leftW - RESIZE_BAR_W;
-        this.ele.ver.style.left = leftW+'px';
-        this.ele.hor.style.left = leftW+'px';
 
-        // callback( leftW, rightW )
+        // 通过校验后再执行dom操作
+        if( this.props.verMoveValidator(leftW, rightW) ){
+            this.ele.ver.style.left = leftW+'px';
+            this.ele.hor.style.left = leftW+'px';
+
+            this.props.verMoveCallback(leftW, rightW);
+        }
     },
     _onDragHor: function(e){
         var topH = e.pageY - this.ctnStyle.y;
         var bottomH = this.ctnStyle.height - topH - RESIZE_BAR_W;
-        this.ele.hor.style.top = topH+'px';
-        // callback( topH, bottomH );
+        // 通过校验后再执行dom操作
+        if( this.props.horMoveValidator(topH, bottomH) ){
+            this.ele.hor.style.top = topH+'px';
+
+            this.props.horMoveCallback(topH, bottomH);
+        }
     },
     ctnStyle: {
         x: 0,

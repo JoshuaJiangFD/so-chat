@@ -7,7 +7,7 @@
  */
 var React = require('react');
 
-console.log('js file change will trigger: bundle by browserify & then trigger live reload');
+// console.log('js file change will trigger: bundle by browserify & then trigger live reload');
 // console.log('webpack bundle speed... ');
 
 var ChatApp = require('./components/ChatApp.react.js');

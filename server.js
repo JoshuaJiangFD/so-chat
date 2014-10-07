@@ -24,7 +24,8 @@ app.use( express.static(__dirname + "/assets") );
 // 路由
 app.get('/', function(req, res){
     res.render('index', {
-        comHTML: react.renderComponentToString(reactApp())
+        // comHTML: react.renderComponentToString(reactApp())
+        comHTML: ''
     });
 });
 

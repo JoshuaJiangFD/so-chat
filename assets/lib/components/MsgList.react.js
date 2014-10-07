@@ -67,7 +67,7 @@ var MsgList = React.createClass({
         }
 
         return (
-            <ol className="msg-list">
+            <ol className="msg-list"  style={this.props.style}>
                 {msgItems}
             </ol>
         );

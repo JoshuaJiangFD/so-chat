@@ -34,8 +34,9 @@ var AppServer = require('../server/appInit');
 var ChatApp = React.createClass({
     getInitialState: function(){
         return {
-            // leftW: 150,
-            // topH: 
+            threadW: 150,
+            dialogH: 350,
+            composeH: 150
         }
     },
     responseToResize: function(){
@@ -57,24 +58,55 @@ var ChatApp = React.createClass({
     render: function() {
         // these coms style should be set by ChatApp Component
         // and should response to Resizeable's resize
+        var threadStyle = {
+            float: 'left',
+            width: this.state.threadW + 'px'
+        };
+        var dialogStyle = {
+            marginLeft: this.state.threadW + 'px',
+            height: this.state.dialogH + 'px'
+        };
+        var compostStyle = {
+            marginLeft: this.state.threadW + 'px',
+            height: this.state.composeH + 'px'
+        };
+
         return (
             <Resizeable id="chat-window"
-                verLeftNode={<ThreadList />}
-                horTopNode={<Dialog />}
-                horBottomNode={<Compose textsHandler={this._sendMsg}/>}
+                verLeftNode={<ThreadList style={threadStyle}/>}
+                horTopNode={<Dialog style={dialogStyle} />}
+                horBottomNode={<Compose style={compostStyle} textsHandler={this._sendMsg}/>}
 
+                verMoveValidator={this._resizeVerValidate}
                 verMoveCallback={this._resizeVerCB}
+
+                horMoveValidator={this._resizeHorValidate}
                 horMoveCallback={this._resizeHorCB}
             >
 
             </Resizeable>
         );
     },
-    _resizeVerCB: function(){
-
+    _resizeVerValidate: function(lw, rw){
+        if( lw < 100 || rw< 200 ){
+            return false;
+        }
+        return true;
     },
-    _resizeHorCB: function(){
-
+    _resizeVerCB: function(lw, rw){
+        this.setState({threadW: lw});
+    },
+    _resizeHorValidate: function(th, bh){
+        if( bh > 250 ){
+            return false;
+        }
+        return true;
+    },
+    _resizeHorCB: function(th, bh){
+        this.setState({
+            dialogH: th,
+            composeH: bh
+        });
     },
     _sendMsg: function(text){
         var newMsgId = uuid.v4();

@@ -37,7 +37,7 @@ var ThreadList = React.createClass({
             /> );
         }
         return (
-            <ul className="thread-list">
+            <ul className="thread-list" style={this.props.style}>
                 {nodes}
             </ul>
         );

@@ -21,7 +21,7 @@ var Compose = React.createClass({
 
     render: function() {
         return (
-            <div className="compose-ctn">
+            <div className="compose-ctn"  style={this.props.style}>
                 <input type="text" className="compose-input" onKeyDown={this._keyDownHandler}/>
             </div>
         );
