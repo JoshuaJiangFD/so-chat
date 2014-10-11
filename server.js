@@ -30,7 +30,7 @@ app.get('/', function(req, res){
 });
 
 
-var port = 3030;
+var port = 3003;
 // must be server !  can not be app.listen 
 // or socket.io can't start...
 server.listen(port, function(){

@@ -14,7 +14,7 @@ you should have `nodejs` and `gulp` installed, then go to repo folder run
 
 these will start a express server at :3030, and build bundle.js for front end app.
 
-then visit [http://localhost:3030](http://localhost:3030) in your browser
+then visit [http://localhost:3030](http://localhost:3003) in your browser
 
 ## flaw
 gulp 与 browserify 微慢, 600k+的文件构建居然需要~2s, 然后才会触发live-reload, 想办法解决一下...
