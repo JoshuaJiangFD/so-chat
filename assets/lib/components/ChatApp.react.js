@@ -17,6 +17,7 @@ var uuid = require('node-uuid');
 var AppAction = require('../actions/AppAction');
 
 var ThreadStore = require('../stores/ThreadStore');
+var UserStore = require('../stores/UserStore');
 
 var Resizeable = require('./Resizeable.react');
 var ThreadList = require('./ThreadList.react');
@@ -111,7 +112,8 @@ var ChatApp = React.createClass({
     _sendMsg: function(text){
         var newMsgId = uuid.v4();
         var curThread = ThreadStore.getCurThread();
-        var curUser = '4aaf6cb7-35a1-413b-a80e-b45d00f8397c';
+        // var curUser = '4aaf6cb7-35a1-413b-a80e-b45d00f8397c';
+        var curUser = UserStore.getCurUser();
         AppAction.createMsg(text, newMsgId, curThread, curUser);
     }
 });

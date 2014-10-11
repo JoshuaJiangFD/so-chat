@@ -40,6 +40,9 @@ var UserStore = merge(EventEmitter.prototype, {
     isCurUser: function(id){
         return id === currentUser;
     },
+    getCurUser: function(){
+        return currentUser;
+    },
     emitChange: function() {
         this.emit(CHANGE_EVENT);
     },
