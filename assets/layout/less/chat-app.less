@@ -1,6 +1,7 @@
 #chat-window{
     margin: 20px auto 0 auto;
     border-radius: 6px;
+    border: 1px solid #ddd;
     box-shadow: 0 4px 12px -4px rgba(0,0,0,0.5);
 }
 
@@ -36,24 +37,4 @@
 }
 
 @import './msg-list.less';
-
-.compose-ctn{
-    background-color: #e0e0e0;
-
-    .compose-input{
-        height: 40px;
-        width: 300px;
-        margin: 1em;
-        font-size: 18px;
-        padding-left: 10px;
-
-        border-radius: 6px;
-        border: 2px solid #ccc;
-        outline: none;
-
-        &:focus{
-            outline: none;
-            border: 2px solid #22B2EA;
-        }
-    }
-}
+@import "./compose.less";

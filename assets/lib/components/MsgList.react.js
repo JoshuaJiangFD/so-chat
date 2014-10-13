@@ -14,6 +14,8 @@ var UserStore = require('../stores/UserStore');
 var MsgStore = require('../stores/MsgStore');
 var ThreadStore = require('../stores/ThreadStore');
 
+var Tool = require('../util/tool');
+
 
 // 临时存储的thread, 这个优化有没有必要呢... 
 var oldCurThread = null;
@@ -38,12 +40,17 @@ var MsgList = React.createClass({
         return getAllMsg();
     },
     componentDidMount: function() {
-        MsgStore.addChangeListener( this.updateAllMsg );
-        ThreadStore.addChangeListener( this.updateAllMsg );
+        this._ele = this.getDOMNode();
+        this._lastHeight = this._ele.scrollHeight;
+        MsgStore.addChangeListener( this._updateAllMsg );
+        ThreadStore.addChangeListener( this._updateAllMsg );
     },
     componentWillUnmount: function() {
-        MsgStore.removeChangeListener( this.updateAllMsg );
-        ThreadStore.removeChangeListener( this.updateAllMsg );
+        MsgStore.removeChangeListener( this._updateAllMsg );
+        ThreadStore.removeChangeListener( this._updateAllMsg );
+    },
+    componentDidUpdate: function(){
+        this._scrollToBottom();
     },
     render: function() {
         var msgItems = [];
@@ -72,8 +79,17 @@ var MsgList = React.createClass({
             </ol>
         );
     },
-    updateAllMsg: function(){
+    _ele: null,
+    _lastHeight: 0,
+    _updateAllMsg: function(){
         this.setState( getAllMsg() );
+    },
+    _scrollToBottom: function(){
+        var newHeight = this._ele.scrollHeight;
+        if( newHeight !== this._lastHeight ){
+            this._ele.scrollTop = newHeight;
+            this._lastHeight = newHeight;
+        }
     }
 });
 

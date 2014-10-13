@@ -13,6 +13,7 @@
  */
 
 var React = require('react');
+var ComposeInput = require('./ComposeInput.react.js');
 
 var Compose = React.createClass({
     propTypes: {
@@ -22,17 +23,12 @@ var Compose = React.createClass({
     render: function() {
         return (
             <div className="compose-ctn"  style={this.props.style}>
-                <input type="text" className="compose-input" onKeyDown={this._keyDownHandler}/>
+                <ComposeInput submitHandler={this.submitText}/>
             </div>
         );
     },
-    _keyDownHandler: function(e){
-        if(e.keyCode === 13){
-            var text = e.target.value;
-            // console.log(text);
-            this.props.textsHandler(text);
-            e.target.value = '';
-        }
+    submitText: function(text){
+        this.props.textsHandler(text);
     }
 });
 
