@@ -18,6 +18,11 @@ function getPixalValue(str){
     return Number(str.substr(0, str.length-2));
 }
 
+// todo: 原生dom的class操作
+// function addClass(ele, newClass){
+//     var oldClass = ele.className;
+// }
+
 var Resizeable = React.createClass({
     propTypes:{
         id: React.PropTypes.string.isRequired
@@ -60,14 +65,22 @@ var Resizeable = React.createClass({
         if(isDrag && dragTarget){
             // console.log(e);
             if(dragTarget =='resize-ver'){
+                // 添加class
+                $(this.ele.ver).addClass('active');
                 this._onDragVer(e);
             }
             else{
+                // 添加class
+                $(this.ele.hor).addClass('active');
                 this._onDragHor(e);
             }
         }
     },
     _mouseUp: function(){
+        // resize结束, 去除class
+        $(this.ele.ver).removeClass('active');
+        $(this.ele.hor).removeClass('active');
+
         isDrag = false;
     },
     _onDragVer: function(e){
