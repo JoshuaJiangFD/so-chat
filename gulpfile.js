@@ -16,12 +16,16 @@ var envify = require('envify');
 var rename = require('gulp-rename');
 var less = require('gulp-less');
 
+var log = console.log;
+
 function errHandler(err){
     gutil.beep();
-    console.log('err reported by: ', err.plugin);
-    console.log('\tfile:  ', err.fileName);
-    console.log('\tline:  ', err.lineNumber);
-    console.log('\tstack: ', err.stack);
+    log('err reported by: ', err.plugin);
+    log('\tfile:  ', err.fileName);
+    log('\tline:  ', err.lineNumber);
+    log('\tstack: ', err.stack);
+    log('*************************');
+    log(err);
 }
 
 var productTasks = [undefined, 'default'];
